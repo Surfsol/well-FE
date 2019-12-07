@@ -1,5 +1,8 @@
 import React from "react"
 
+import '../assets/css/landingCss.scss'
+
+
 
 const Landing = () => {
     return(

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState}from 'react';
+import axios from 'axios'
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,13 +14,14 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { getThemeProps } from '@material-ui/styles';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://welldone.org/">
+        welldone.org
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -57,7 +60,28 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
+  const [account, setAccount] = useState({email_address:"", password:""})
+  console.log(`signIn account`, account)
+
+  const handleChange = event => {
+    setAccount({...account, [event.target.name]: event.target.value})
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    axios
+      .post("https://welldone-db.herokuapp.com/api/auth/login", account)
+      .then(res => {
+        console.log("res", res.data);
+        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("userId", res.data.id)
+        props.history.push("/")
+      })
+
+  }
+ 
+ 
   const classes = useStyles();
 
   return (
@@ -78,10 +102,12 @@ export default function SignInSide() {
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="email_address"
               label="Email Address"
-              name="email"
+              name="email_address"
               autoComplete="email"
+              value={account.email_address}
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -94,6 +120,8 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={account.password}
+              onChange={handleChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -105,6 +133,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Sign In
             </Button>

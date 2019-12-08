@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactMapGL from 'react-map-gl';
 
+console.log(`map process.env`, process.env.REACT_APP_TOKEN)
+
 class Map extends Component {
 
   state = {

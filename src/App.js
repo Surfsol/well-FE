@@ -6,6 +6,9 @@ import Landing from './components/Landing'
 import SignInSide from './components/SignInSide'
 import Map from './components/Map'
 
+console.log(process.env.TOKEN)
+
+
 function App() {
   return (
     <div>

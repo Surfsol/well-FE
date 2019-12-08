@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <SignInSide/>
-      <Map/>
+      <Map mapboxApiAccessToken={process.env.REACT_APP_TOKEN}/>
     </div>
   );
 }

@@ -23,4 +23,9 @@ package.json
 
  "scripts": {
     "start-dev": "env-cmd -e dev react-scripts start",
+
+---------------------------------------------------------------------
+api key for react map
+-needed to register with email
+https://account.mapbox.com/access-tokens/
   

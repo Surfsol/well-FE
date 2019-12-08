@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import ReactMapGL from 'react-map-gl';
 
-console.log(`map process.env`, process.env.REACT_APP_TOKEN)
+
+const TOKEN = process.env.REACT_APP_TOKEN
 
 class Map extends Component {
 
@@ -17,7 +18,7 @@ class Map extends Component {
 
   render() {
     return (
-      <ReactMapGL
+      <ReactMapGL mapboxApiAccessToken={TOKEN}
         {...this.state.viewport}
         onViewportChange={(viewport) => this.setState({viewport})}
       />

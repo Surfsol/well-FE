@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AxiosWithAuth from "./AxiosWithAuth";
 import Map from "./Map";
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {
+   // viewport is area being seen on map
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -40,6 +42,7 @@ const Dashboard = props => {
   }, []);
 
   const zoomInto = () => {
+    //default
     if (searchFiltered.length == 0) {
       setViewport({
         latitude: 13.5651,
@@ -57,13 +60,35 @@ const Dashboard = props => {
         zoom: 11
       };
       setViewport(searchFiltered);
-    }
-    else if(searchFiltered.length > 1) {
-        function avgCoordinate(arr){
-            var totalLat = 0
+    } else if (searchFiltered.length > 1) {
+      //searching multiple areas find average of lat and long
+      function avgCoordinate(arr) {
+        var totalLat = 0;
+        var totalLon = 0;
+        for (let i = 0; i < arr, length; i++) {
+          totalLat += arr[i].latitude;
+          totalLon += arr[i].longitude;
         }
+        const avgLat = totalLat / arr.length;
+        const avgLon = totalLon / arr.length;
+        return [avgLat, avgLon];
+      }
+      //use average coordinates to search
+      const searchedPlace = {
+        latitude: avgCoordinate(props.searchFiltered)[0],
+        longitude: avgCoordinate(props.searchFiltered)[1],
+        width: "100vw",
+        height: "100vh",
+        zoom: 11
+      };
+      console.log('searchPlace many', searchPlace)
+      setViewport(searchedPlace)
     }
   };
+  //call zoomInto when searchFiltered changes
+  useEffect(()=> {
+      zoomInto()
+  }, [searchFiltered])
 
   return <></>;
 };

@@ -4,7 +4,7 @@ import Map from "./Map";
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {
-   // viewport is area being seen on map
+  // viewport is area being seen on map
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -13,7 +13,14 @@ const Dashboard = props => {
     zoom: 8
   });
 
-  const [serchFiltered, setSearchFiltered] = useState([]);
+  //used in Map and Filter
+  const [funcToggle, setFuncToggle] = useState(true);
+  //used in Map and Filter
+  const [nonFuncToggle, setNonFuncToggle] = useState(true);
+  //used in Map and Filter
+  const [unknownToggle, setUnknownToggle] = useState(true);
+
+  const [searchFiltered, setSearchFiltered] = useState([]);
   const [senorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 
@@ -65,7 +72,7 @@ const Dashboard = props => {
       function avgCoordinate(arr) {
         var totalLat = 0;
         var totalLon = 0;
-        for (let i = 0; i < arr, length; i++) {
+        for (let i = 0; i < arr.length; i++) {
           totalLat += arr[i].latitude;
           totalLon += arr[i].longitude;
         }
@@ -81,15 +88,32 @@ const Dashboard = props => {
         height: "100vh",
         zoom: 11
       };
-      console.log('searchPlace many', searchPlace)
-      setViewport(searchedPlace)
+      console.log("searchPlace many", searchedPlace);
+      setViewport(searchedPlace);
     }
   };
   //call zoomInto when searchFiltered changes
-  useEffect(()=> {
-      zoomInto()
-  }, [searchFiltered])
+  useEffect(() => {
+    zoomInto();
+  }, [searchFiltered]);
 
-  return <></>;
+  return (
+    <>
+      <div className="dashboard">
+          {/* <Menu history={props.history}/> */}
+          <Map
+            sensors= {senorInDashboard}
+            funcToggle = {funcToggle}
+            nonFuncToggle={nonFuncToggle}
+            unknownToggle = {unknownToggle}
+            viewport = {viewport}
+            setViewport = {setViewport}
+            history={history}
+            selectedPump = {props.selectedPump}
+            setSelectedPump = {props.setSelectedPump}
+            />
+            </div>
+    </>
+  );
 };
 export default Dashboard;

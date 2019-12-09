@@ -1,3 +1,6 @@
+abcd@gmail.com
+Copyright8!
+
 set environment variables
 
 yarn add env-cmd

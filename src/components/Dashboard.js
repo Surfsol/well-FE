@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AxiosWithAuth from "./AxiosWithAuth";
 import Map from "./Map";
+import Menu from "./Menu"
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {
@@ -100,7 +101,7 @@ const Dashboard = props => {
   return (
     <>
       <div className="dashboard">
-          {/* <Menu history={props.history}/> */}
+          <Menu history={props.history}/>
           <Map
             sensors= {senorInDashboard}
             funcToggle = {funcToggle}

@@ -3,6 +3,8 @@ import { IoIosHome, IoIosKey, IoIosSettings, IoMdCreate } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
 import { Redirect, NavLink } from "react-router-dom";
 
+import "../assets/css/menu.scss"
+
 const Menu = props => {
   //grab mvNav and change px size
   const openNav = () => {

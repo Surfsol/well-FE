@@ -3,6 +3,7 @@ import AxiosWithAuth from "./AxiosWithAuth";
 import Map from "./Map";
 import Menu from "./Menu";
 import Search from "./Search";
+import Filter from './Filter'
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {

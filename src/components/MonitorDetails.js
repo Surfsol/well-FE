@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGl, { Marker } from "react-map-gl";
 import { Bar } from "react-chartjs-2";
 import { Row, Col, Descriptions, Badge, Button, Icon, Typography } from "antd";
-import AxiosWithAuth from "../components/AxiosWithAuth/axiosWithAuth";
+import AxiosWithAuth from "../components/AxiosWithAuth";
 
 //from antd
 const { Title } = Typography;

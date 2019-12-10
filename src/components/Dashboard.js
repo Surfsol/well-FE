@@ -3,6 +3,7 @@ import AxiosWithAuth from "./AxiosWithAuth";
 import Map from "./Map";
 import Menu from "./Menu";
 import Search from "./Search";
+import Filter from './Filter'
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {
@@ -15,16 +16,16 @@ const Dashboard = props => {
     zoom: 8
   });
 
-  //used in Map and Filter
+  //props in Map and Filter
   const [funcToggle, setFuncToggle] = useState(true);
-  //used in Map and Filter
+  //props in Map and Filter
   const [nonFuncToggle, setNonFuncToggle] = useState(true);
-  //used in Map and Filter
+  //props in Map and Filter
   const [unknownToggle, setUnknownToggle] = useState(true);
-  //used in Search, Dashboard
+  //props in Search, Dashboard
   const [searchFiltered, setSearchFiltered] = useState([]);
-  //used in Map and Search
-  const [senorInDashboard, setSensorInDashboard] = useState([]);
+  //props in Map and Search
+  const [sensorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 
   //get senors
@@ -105,7 +106,7 @@ const Dashboard = props => {
       <div className="dashboard">
         <Menu history={props.history} />
         <Map
-          sensors={senorInDashboard}
+          sensors={sensorInDashboard}
           funcToggle={funcToggle}
           nonFuncToggle={nonFuncToggle}
           unknownToggle={unknownToggle}
@@ -120,7 +121,15 @@ const Dashboard = props => {
           setSearchFiltered={setSearchFiltered}
           viewport={viewport}
           setViewport={setViewport}
-          sensors={senorInDashboard}
+          sensors={sensorInDashboard}
+        />
+        <Filter
+            searchFiltered={props.searchFiltered}
+            setSearchFiltered={props.setSearchFiltered}
+            sensors = {sensorInDashboard}
+            setFuncToggle = {setFuncToggle}
+            setNonFuncToggle={setNonFuncToggle}
+            setUnknownToggle={setUnknownToggle}
         />
 
       </div>

@@ -116,8 +116,8 @@ const Dashboard = props => {
           setSelectedPump={props.setSelectedPump}
         />
         <Search
-          searchFiltered={props.searchFiltered}
-          setSearchFiltered={props.setSearchFiltered}
+          searchFiltered={searchFiltered}
+          setSearchFiltered={setSearchFiltered}
           viewport={viewport}
           setViewport={setViewport}
           sensors={senorInDashboard}

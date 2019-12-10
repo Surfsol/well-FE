@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'React'
+import React, {useState, useEffect} from 'react'
 
 
 const Search = props => {
+    console.log(props)
     const handleChange = event => {
         if(event.target.value.length !== 0){
             let filtered = props.sensors.filtered(pump => 

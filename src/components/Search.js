@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import '../assets/css/search.scss'
 
 const Search = props => {
     console.log(props)

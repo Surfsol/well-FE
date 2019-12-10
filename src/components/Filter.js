@@ -6,6 +6,7 @@ import { FiWifi } from "react-icons/fi";
 import FuncToggle from "./Toggle/FuncToggle";
 import UnknownToggle from './Toggle/UnknownToggle'
 import NonFuncToggle from "./Toggle/NonFuncToggle";
+import Content from "./Content"
 
 const Filter = props => {
   const [pumps, setPumps] = useState([]);

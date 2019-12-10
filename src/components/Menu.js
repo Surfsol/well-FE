@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoIosHome, IoIosKey, IoIosSettings, IoMdCreate } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
 import { Redirect, NavLink } from "react-router-dom";

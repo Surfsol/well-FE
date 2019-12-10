@@ -13,6 +13,7 @@ import Content from "./Content"
 const Filter = props => {
   const [pumps, setPumps] = useState([]);
   const [expanded, setExpanded] = useState(false);
+  console.log(`Filter, pumps`,pumps)
 
   //bring in all pump data
   useEffect(() => {

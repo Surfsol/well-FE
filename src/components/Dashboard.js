@@ -16,15 +16,15 @@ const Dashboard = props => {
     zoom: 8
   });
 
-  //used in Map and Filter
+  //props in Map and Filter
   const [funcToggle, setFuncToggle] = useState(true);
-  //used in Map and Filter
+  //props in Map and Filter
   const [nonFuncToggle, setNonFuncToggle] = useState(true);
-  //used in Map and Filter
+  //props in Map and Filter
   const [unknownToggle, setUnknownToggle] = useState(true);
-  //used in Search, Dashboard
+  //props in Search, Dashboard
   const [searchFiltered, setSearchFiltered] = useState([]);
-  //used in Map and Search
+  //props in Map and Search
   const [sensorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 

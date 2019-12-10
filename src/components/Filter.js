@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import AxiosWithAuth from './AxiosWithAuth'
 
+import FuncToggle from './Toggle/FuncToggle'
+
 
 
 const Filter = props => {

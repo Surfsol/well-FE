@@ -25,7 +25,7 @@ const Dashboard = props => {
   //used in Search, Dashboard
   const [searchFiltered, setSearchFiltered] = useState([]);
   //used in Map and Search
-  const [senorInDashboard, setSensorInDashboard] = useState([]);
+  const [sensorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 
   //get senors
@@ -106,7 +106,7 @@ const Dashboard = props => {
       <div className="dashboard">
         <Menu history={props.history} />
         <Map
-          sensors={senorInDashboard}
+          sensors={sensorInDashboard}
           funcToggle={funcToggle}
           nonFuncToggle={nonFuncToggle}
           unknownToggle={unknownToggle}
@@ -121,7 +121,15 @@ const Dashboard = props => {
           setSearchFiltered={setSearchFiltered}
           viewport={viewport}
           setViewport={setViewport}
-          sensors={senorInDashboard}
+          sensors={sensorInDashboard}
+        />
+        <Filter
+            searchFiltered={props.searchFiltered}
+            setSearchFiltered={props.setSearchFiltered}
+            sensors = {sensorInDashboard}
+            setFuncToggle = {setFuncToggle}
+            setNonFuncToggle={setNonFuncToggle}
+            setUnknownToggle={setUnknownToggle}
         />
 
       </div>

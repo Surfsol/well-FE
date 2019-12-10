@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AxiosWithAuth from "./AxiosWithAuth";
 
+import '../assets/css/filter.scss'
+
 import Popup from "reactjs-popup";
 import { FiWifi } from "react-icons/fi";
 import FuncToggle from "./Toggle/FuncToggle";
@@ -90,3 +92,4 @@ const Filter = props => {
     </>
   );
 };
+export default Filter

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import AxiosWithAuth from "./AxiosWithAuth";
 import Map from "./Map";
-import Menu from "./Menu"
+import Menu from "./Menu";
+import Search from "./Search";
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {
-  // viewport is area being seen on map
+  // viewport is area being seen on map, used in Search
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -20,8 +21,9 @@ const Dashboard = props => {
   const [nonFuncToggle, setNonFuncToggle] = useState(true);
   //used in Map and Filter
   const [unknownToggle, setUnknownToggle] = useState(true);
-
+  //used in Search, Dashboard
   const [searchFiltered, setSearchFiltered] = useState([]);
+  //used in Map and Search
   const [senorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 
@@ -101,19 +103,27 @@ const Dashboard = props => {
   return (
     <>
       <div className="dashboard">
-          <Menu history={props.history}/>
-          <Map
-            sensors= {senorInDashboard}
-            funcToggle = {funcToggle}
-            nonFuncToggle={nonFuncToggle}
-            unknownToggle = {unknownToggle}
-            viewport = {viewport}
-            setViewport = {setViewport}
-            history={history}
-            selectedPump = {props.selectedPump}
-            setSelectedPump = {props.setSelectedPump}
-            />
-            </div>
+        <Menu history={props.history} />
+        <Map
+          sensors={senorInDashboard}
+          funcToggle={funcToggle}
+          nonFuncToggle={nonFuncToggle}
+          unknownToggle={unknownToggle}
+          viewport={viewport}
+          setViewport={setViewport}
+          history={history}
+          selectedPump={props.selectedPump}
+          setSelectedPump={props.setSelectedPump}
+        />
+        <Search
+          searchFiltered={searchFiltered}
+          setSearchFiltered={setSearchFiltered}
+          viewport={viewport}
+          setViewport={setViewport}
+          sensors={senorInDashboard}
+        />
+
+      </div>
     </>
   );
 };

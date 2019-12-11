@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import AxiosWithAuth from '../../AxiosWithAuth'
 
+
+
 //ant design style
 import {Row, Col, Layout} from "antd"
 const {Sider, Content} = Layout
@@ -33,3 +35,4 @@ const Monitor = ({history}) => {
           </div>
       )
 }
+export default Monitor

@@ -3,6 +3,7 @@ import { IoIosHome, IoMdCreate, IoIosSettings } from "react-icons/io";
 import { Link, Redirect } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 
+//history sent over as props, but not being used
 const StaticMenu = props => {
   const logout = () => {
     localStorage.removeItem("token");

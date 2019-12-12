@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactMapGL from 'react-map-gl';
 
-//import PopupInfo
+import PopupInfo from './PopupInfo'
 //import Pin
 
 const TOKEN = process.env.REACT_APP_TOKEN

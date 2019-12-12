@@ -19,14 +19,15 @@ const Filter = props => {
   //bring in all pump data
   useEffect(() => {
     AxiosWithAuth()
-      .get("https://welldone-db.herokuapp.com/api/pumps")
-      .then(res => {
-        setPumps(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+        .get("https://welldone-db.herokuapp.com/api/pumps")
+        .then(res => {
+            console.log(res.data)
+            setPumps(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}, [ ])
 
   const handleChange = event => {
       if(event.target.value.length !==0){

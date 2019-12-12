@@ -4,6 +4,11 @@ import Map from "./Map";
 import Menu from "./Menu";
 import Search from "./Search";
 import Filter from './Filter'
+
+//redux
+import {connect} from 'react-redux'
+import {fetchSensor} from '../redux-actions/sensor-actions' 
+
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 const Dashboard = props => {
@@ -25,22 +30,28 @@ const Dashboard = props => {
   //props in Search, Dashboard
   const [searchFiltered, setSearchFiltered] = useState([]);
   //props in Map and Search
-  const [sensorInDashboard, setSensorInDashboard] = useState([]);
+ // const [sensorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 
   //https://well-done-staging.herokuapp.com/
   //get senors
-  useEffect(() => {
-    AxiosWithAuth()
-      .get("https://welldone-db.herokuapp.com/api/sensors/recent")
-      .then(res => {
-        console.log(`dashboard`, res.data);
-        setSensorInDashboard(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+//   useEffect(() => {
+//     AxiosWithAuth()
+//       .get("https://welldone-db.herokuapp.com/api/sensors/recent")
+//       .then(res => {
+//         console.log(`dashboard`, res.data);
+//         setSensorInDashboard(res.data);
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   }, []);
+
+useEffect(()=> {
+    props.fetchSensor()
+}, [])
+
+console.log(props.sensorInDashboard)
 
   useEffect(() => {
     AxiosWithAuth()
@@ -107,7 +118,7 @@ const Dashboard = props => {
       <div className="dashboard">
         <Menu history={props.history} />
         <Map
-          sensors={sensorInDashboard}
+          sensors={props.sensorInDashboard}
           funcToggle={funcToggle}
           nonFuncToggle={nonFuncToggle}
           unknownToggle={unknownToggle}
@@ -122,12 +133,12 @@ const Dashboard = props => {
           setSearchFiltered={setSearchFiltered}
           viewport={viewport}
           setViewport={setViewport}
-          sensors={sensorInDashboard}
+          sensors={props.sensorInDashboard}
         />
         <Filter
             searchFiltered={props.searchFiltered}
             setSearchFiltered={props.setSearchFiltered}
-            sensors = {sensorInDashboard}
+            sensors = {props.sensorInDashboard}
             setFuncToggle = {setFuncToggle}
             setNonFuncToggle={setNonFuncToggle}
             setUnknownToggle={setUnknownToggle}
@@ -137,4 +148,12 @@ const Dashboard = props => {
     </>
   );
 };
-export default Dashboard;
+const mapStateToProps = state => {
+    return{
+        sensorInDashboard: state.sensorReducer.sensors
+    }
+}
+export default connect(
+    mapStateToProps,
+    {fetchSensor}
+)(Dashboard);

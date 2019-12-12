@@ -19,6 +19,7 @@ const Filter = props => {
   const [expanded, setExpanded] = useState(false);
   console.log(`Filter, pumps`,props.fetchFilter)
 
+  //fetch Filter info on Dashboard
 useEffect(()=> {
     props.fetchFilter()
 }, [])

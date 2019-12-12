@@ -11,27 +11,21 @@ import UnknownToggle from './Toggle/UnknownToggle'
 import NonFuncToggle from "./Toggle/NonFuncToggle";
 import Content from "./Content"
 
-const Filter = props => {
-  const [pumps, setPumps] = useState([]);
-  const [expanded, setExpanded] = useState(false);
-  console.log(`Filter, pumps`,pumps)
+//redux
+import {connect} from 'react-redux'
+import {fetchFilter} from '../redux-actions/filter-actions'
 
-  //bring in all pump data
-  useEffect(() => {
-    AxiosWithAuth()
-        .get("https://welldone-db.herokuapp.com/api/pumps")
-        .then(res => {
-            console.log(res.data)
-            setPumps(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-}, [ ])
+const Filter = props => {
+  const [expanded, setExpanded] = useState(false);
+  console.log(`Filter, pumps`,props.fetchFilter)
+
+useEffect(()=> {
+    props.fetchFilter()
+}, [])
 
   const handleChange = event => {
       if(event.target.value.length !==0){
-          let filtered = pumps.filter(pump => 
+          let filtered = props.pumps.filter(pump => 
             pump.village_name.toLowerCase().includes(event.target.value.toLowerCase()))
             props.setSearchFiltered(filtered)
       }
@@ -51,7 +45,7 @@ const Filter = props => {
         <div className="filter">
           <h4>Village</h4>
           <select className="select-village" onChange={handleChange}>
-            {pumps.map(pump => (
+            {props.pumps.map(pump => (
               <option value={pump.village_name} key={pump.sensor_pid}>
                 {pump.village_name}
               </option>
@@ -95,4 +89,12 @@ const Filter = props => {
     </>
   );
 };
-export default Filter
+const mapStateToProps = state => {
+    return{
+        pumps: state.filterReducer.filter
+    }
+}
+export default connect(
+    mapStateToProps,
+    { fetchFilter}
+)(Filter)

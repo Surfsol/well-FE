@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import MonitorDetails from "./components/MonitorDetails";
 
 import Monitors from './components/MenuItems/overview/Monitors'
+import PrivateRoute from "./components/PrivateRoute"
 
 function App() {
   //selectedPump -> MonitorDetails, Dashboard -> Map
@@ -28,12 +29,12 @@ function App() {
         />
         <Route path="/map" component={Map} />
 
-        <Route
+        <PrivateRoute
           path="monitorDetails"
           page={MonitorDetails}
           selectedPump={selectedPump}
         />
-        <Route path="/overview" page={Monitors}/>
+        <PrivateRoute path="/overview" page={Monitors}/>
       </Switch>
     </div>
   );

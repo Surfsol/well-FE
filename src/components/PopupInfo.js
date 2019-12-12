@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./PopupInfo.styles.scss";
+
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import { FiHelpCircle, FiAlertCircle, FiCheckCircle } from "react-icons/fi";

@@ -28,6 +28,7 @@ const Dashboard = props => {
   const [sensorInDashboard, setSensorInDashboard] = useState([]);
   const [history, setHistory] = useState([]);
 
+  //https://well-done-staging.herokuapp.com/
   //get senors
   useEffect(() => {
     AxiosWithAuth()

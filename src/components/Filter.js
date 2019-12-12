@@ -5,6 +5,7 @@ import '../assets/css/filter.scss'
 
 import Popup from "reactjs-popup";
 import { FiWifi } from "react-icons/fi";
+
 import FuncToggle from "./Toggle/FuncToggle";
 import UnknownToggle from './Toggle/UnknownToggle'
 import NonFuncToggle from "./Toggle/NonFuncToggle";

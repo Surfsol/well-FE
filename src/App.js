@@ -9,9 +9,13 @@ import Dashboard from "./components/Dashboard";
 
 import MonitorDetails from "./components/MonitorDetails";
 
+import Monitors from './components/MenuItems/overview/Monitors'
+
 function App() {
   //selectedPump -> MonitorDetails, Dashboard -> Map
   const [selectedPump, setSelectedPump] = useState([]);
+
+
   return (
     <div>
       <Switch>
@@ -29,6 +33,7 @@ function App() {
           page={MonitorDetails}
           selectedPump={selectedPump}
         />
+        <Route path="/overview" page={Monitors}/>
       </Switch>
     </div>
   );

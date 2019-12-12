@@ -9,7 +9,7 @@ import { Row, Col, Layout } from "antd";
 const { Sider, Content } = Layout;
 
 //props.history
-const Monitor = ({ history }) => {
+const Monitors = ({ history }) => {
   const [pumpData, setPumpData] = useState([]);
   const [funcPumps, setFuncPumps] = useState([]);
   const [unPumps, setUnPumps] = useState([]);
@@ -17,8 +17,9 @@ const Monitor = ({ history }) => {
 
   useEffect(() => {
     AxiosWithAuth()
-      .get("https://welldone-db.herokuapp.com/api/sensors/recent")
+      .get("https://well-done-staging.herokuapp.com/api/sensors/recent")
       .then(res => {
+        console.log(res.data)
         setPumpData(res.data);
         setFuncPumps(res.data.filter(pump => pump.status === 2));
         setUnPumps(res.data.filter(pump => pump.status === 1));
@@ -39,7 +40,7 @@ const Monitor = ({ history }) => {
           {/* legend */}
           <Row type="flex" justify="start">
             <Col span={23} offset={1}>
-              <Legend />
+              {/* <Legend /> */}
             </Col>
           </Row>
 
@@ -62,4 +63,4 @@ const Monitor = ({ history }) => {
     </div>
   );
 };
-export default Monitor;
+export default Monitors;

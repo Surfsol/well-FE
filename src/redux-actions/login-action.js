@@ -7,6 +7,7 @@ export const LOGIN_SUCCESS= 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 export const fetchLogin = (account)=> dispatch=> {
+    console.log(account)
     dispatch({type:LOGIN_FETCH})
     axios
     .post("https://well-done-staging.herokuapp.com/api/auth/login", account)
@@ -19,3 +20,4 @@ export const fetchLogin = (account)=> dispatch=> {
     })
     .catch(err => console.log(err.response))
 }
+

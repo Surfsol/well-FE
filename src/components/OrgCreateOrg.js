@@ -3,13 +3,11 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 import { useDispatch } from "react-redux";
-import {createOrg} from '../redux-actions/orgCreate-action'
+import { createOrg } from "../redux-actions/orgCreate-action";
 
-
-
-const OrgCreateOrg = (props) => {
+const OrgCreateOrg = props => {
   const [orgMember, setOrgMember] = useState([]);
-  console.log('org', orgMember)
+  console.log("org", orgMember);
 
   const handleChange = event => {
     setOrgMember({ ...orgMember, [event.target.name]: event.target.value });
@@ -25,18 +23,18 @@ const OrgCreateOrg = (props) => {
   return (
     <>
       <Form>
-          <FormGroup>
-            <Label for="Name">Name</Label>
-            <Input
-              type="text"
-              id="Name"
-              placeholder="name"
-              name="name"
-              value={orgMember.name}
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <div className="text">
+        <FormGroup>
+          <Label for="Name">Name</Label>
+          <Input
+            type="text"
+            id="Name"
+            placeholder="name"
+            name="name"
+            value={orgMember.name}
+            onChange={handleChange}
+          />
+        </FormGroup>
+        <div className="text">
           <FormGroup>
             <Label for="Email">Email</Label>
             <Input
@@ -60,7 +58,9 @@ const OrgCreateOrg = (props) => {
             />
           </FormGroup>
         </div>
-        <Button>Submit</Button>
+        <Button type="Submit" onClick={handleSubmit}>
+          Submit
+        </Button>
       </Form>
     </>
   );

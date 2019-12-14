@@ -1,11 +1,12 @@
 import React from 'react'
-import AxiosWithAuth from "./AxiosWithAuth";
+import AxiosWithAuth from "../components/AxiosWithAuth";
 
 export const CREATE_O_FETCH = "CREATE_O_FETCH";
 export const CREATE_O_SUCCESS = "CREATE_O_SUCCESS";
 export const CREATE_O_FAILURE = "CREATE_O_FAILURE";
 
 export const createOrg = (orgMember) => dispatch => {
+    console.log('org action',orgMember)
     dispatch({type: CREATE_O_FETCH})
 
     AxiosWithAuth()

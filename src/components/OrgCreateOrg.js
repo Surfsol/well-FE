@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 import { useDispatch } from "react-redux";
+import {createOrg} from '../redux-actions/orgCreate-action'
+
 
 
 const OrgCreateOrg = (props) => {
@@ -17,8 +19,7 @@ const OrgCreateOrg = (props) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch();
-    props.history.push("/dashboard");
+    dispatch(createOrg(orgMember));
   };
 
   return (

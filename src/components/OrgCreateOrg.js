@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 import { useDispatch } from "react-redux";
+import {useSelector} from "react-redux"
 import { createOrg } from "../redux-actions/orgCreate-action";
 
 const OrgCreateOrg = props => {
@@ -13,12 +14,18 @@ const OrgCreateOrg = props => {
     setOrgMember({ ...orgMember, [event.target.name]: event.target.value });
   };
 
+  const createOrgReducer = useSelector(state => state.orgCreateReducer)
+
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(createOrg(orgMember));
   };
+
+  if (createOrgReducer.isFetching === true){
+      <h1>...Creating Organization Member</h1>
+  }
 
   return (
     <>

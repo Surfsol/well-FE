@@ -1,4 +1,21 @@
-.box{
-background: yellow;
+.popBox-container{
+    background: yellow;
+    width: 40%;
+    height: 35vh;
+    margin: auto; //centers container
+    h1{
+        margin-left: 2rem;
+    }
+    .popBox{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2rem;
+    
 
+        .type{
+            width: 50%;
+            margin-bottom: 3vh;
+
+        }
+    }
 }

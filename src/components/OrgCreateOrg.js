@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  Button,
-  Form,
-  Label,
-  Input
-} from "reactstrap";
+//css
+import '../assets/css/createPopup.scss'
+
 
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -34,14 +31,17 @@ const OrgCreateOrg = props => {
 
   return (
     <>
+    <div className="popBox-container">
+    <h1>Create Organization</h1>
       <div className="popBox">
-          <Form>
+          
+       
         <div className="type">
           <div className="title">
-            <Label for="Name">Organization Name</Label>
+            <label for="Name">Organization Name</label>
           </div>
           <div className="box">
-            <Input
+            <input
               type="text"
               id="Name"
               placeholder="name"
@@ -53,11 +53,11 @@ const OrgCreateOrg = props => {
         </div>
         <div className="type">
           <div className="title">
-            <Label for="Email">Email</Label>{" "}
+            <label for="Email">Email</label>{" "}
           </div>
           <div className="box">
             {" "}
-            <Input
+            <input
               type="email"
               name="email"
               id="Email"
@@ -69,10 +69,10 @@ const OrgCreateOrg = props => {
         </div>
         <div className="type">
           <div className="title">
-          <Label for="Password">Password</Label>
+          <label for="Password">Password</label>
           </div>
           <div className="box">
-          <Input
+          <input
               type="password"
               name="password"
               id="Password"
@@ -84,10 +84,10 @@ const OrgCreateOrg = props => {
         </div>
         <div className="type">
           <div className="title">
-          <Label for="Password">Confirm Password</Label>
+          <label for="Password">Confirm Password</label>
           </div>
           <div className="box">
-          <Input
+          <input
               type="password"
               name="password"
               id="Password"
@@ -97,10 +97,11 @@ const OrgCreateOrg = props => {
             />
           </div>
         </div>
-        <Button type="Submit" onClick={handleSubmit}>
+        <button type="Submit" onClick={handleSubmit}>
           Submit
-        </Button>
-      </Form>
+        </button>
+      
+      </div>
       </div>
     </>
   );

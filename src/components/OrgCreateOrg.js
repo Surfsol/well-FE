@@ -24,7 +24,7 @@ const OrgCreateOrg = props => {
   };
 
   if (createOrgReducer.isFetching === true){
-      <h1>...Creating Organization Member</h1>
+    return <h1>...Creating Organization Member</h1>
   }
 
   return (

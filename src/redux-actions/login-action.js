@@ -12,11 +12,11 @@ export const fetchLogin = (account)=> dispatch=> {
     axios
     .post("https://well-done-staging.herokuapp.com/api/auth/login", account)
     .then(res => {
-        console.log("res")
+        console.log('login-action res.data',res.data)
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("useId", res.data.id)
+        localStorage.setItem("useId", res.data.user)
         dispatch({type: LOGIN_SUCCESS, payload:res.data.id})
-        
     })
     .catch(err => console.log(err.response))
 }

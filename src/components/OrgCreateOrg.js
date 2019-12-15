@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {
+  Button,
+  Form,
+  Label,
+  Input
+} from "reactstrap";
 
 import { useDispatch } from "react-redux";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 import { createOrg } from "../redux-actions/orgCreate-action";
 
 const OrgCreateOrg = props => {
@@ -14,7 +19,7 @@ const OrgCreateOrg = props => {
     setOrgMember({ ...orgMember, [event.target.name]: event.target.value });
   };
 
-  const createOrgReducer = useSelector(state => state.orgCreateReducer)
+  const createOrgReducer = useSelector(state => state.orgCreateReducer);
 
   const dispatch = useDispatch();
 
@@ -23,27 +28,35 @@ const OrgCreateOrg = props => {
     dispatch(createOrg(orgMember));
   };
 
-  if (createOrgReducer.isFetching === true){
-    return <h1>...Creating Organization Member</h1>
+  if (createOrgReducer.isFetching === true) {
+    return <h1>...Creating Organization Member</h1>;
   }
 
   return (
     <>
-      <Form>
-        <FormGroup>
-          <Label for="Name">Name</Label>
-          <Input
-            type="text"
-            id="Name"
-            placeholder="name"
-            name="name"
-            value={orgMember.name}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <div className="text">
-          <FormGroup>
-            <Label for="Email">Email</Label>
+      <div className="popBox">
+          <Form>
+        <div className="type">
+          <div className="title">
+            <Label for="Name">Organization Name</Label>
+          </div>
+          <div className="box">
+            <Input
+              type="text"
+              id="Name"
+              placeholder="name"
+              name="name"
+              value={orgMember.name}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="type">
+          <div className="title">
+            <Label for="Email">Email</Label>{" "}
+          </div>
+          <div className="box">
+            {" "}
             <Input
               type="email"
               name="email"
@@ -52,10 +65,14 @@ const OrgCreateOrg = props => {
               value={orgMember.email}
               onChange={handleChange}
             />
-          </FormGroup>
-          <FormGroup>
-            <Label for="Password">password</Label>
-            <Input
+          </div>
+        </div>
+        <div className="type">
+          <div className="title">
+          <Label for="Password">Password</Label>
+          </div>
+          <div className="box">
+          <Input
               type="password"
               name="password"
               id="Password"
@@ -63,12 +80,28 @@ const OrgCreateOrg = props => {
               value={orgMember.password}
               onChange={handleChange}
             />
-          </FormGroup>
+          </div>
+        </div>
+        <div className="type">
+          <div className="title">
+          <Label for="Password">Confirm Password</Label>
+          </div>
+          <div className="box">
+          <Input
+              type="password"
+              name="password"
+              id="Password"
+              placeholder="password"
+              value={orgMember.password}
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <Button type="Submit" onClick={handleSubmit}>
           Submit
         </Button>
       </Form>
+      </div>
     </>
   );
 };

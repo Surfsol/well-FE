@@ -1,8 +1,14 @@
 .popBox-container{
-    background: yellow;
-    width: 40%;
-    height: 35vh;
+    border-radius: 5%;
+    background: blue;
+    width: 38%;
+    height: 40vh;
     margin: auto; //centers container
+    padding: 2rem;
+
+    @media screen {
+        
+    }
     h1{
         margin-left: 2rem;
     }
@@ -15,6 +21,10 @@
         .type{
             width: 50%;
             margin-bottom: 3vh;
+
+            input{
+                width: 80%;
+            }
 
         }
     }

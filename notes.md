@@ -1,6 +1,9 @@
 abcd@gmail.com
 Copyright8!
 
+abc@gmail.com
+123
+
 set environment variables
 
 yarn add env-cmd

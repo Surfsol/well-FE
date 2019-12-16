@@ -6,7 +6,7 @@ import Search from "./Search";
 import Filter from './Filter'
 
 //redux
-import {connect} from 'react-redux'
+import {connect, useSelector, useDispatch} from 'react-redux'
 import {fetchSensor} from '../redux-actions/sensor-actions' 
 import {fetchHistory} from '../redux-actions/history-actions'
 
@@ -31,12 +31,13 @@ const Dashboard = props => {
   //props in Search, Dashboard
   const [searchFiltered, setSearchFiltered] = useState([]);
   //props in Map and Search
-  const [history, setHistory] = useState([]);
 
+  const sensorReducer = useSelector(state => state.sensorReducer)
 
+  const dispatch = useDispatch()
 
 useEffect(()=> {
-    props.fetchSensor()
+    dispatch(fetchSensor())
 }, [])
 console.log(props.sensorInDashboard)
 
@@ -45,16 +46,6 @@ useEffect(()=> {
 },[])
 console.log(`history`,props.history)
 
-//   useEffect(() => {
-//     AxiosWithAuth()
-//       .get("https://welldone-db.herokuapp.com/api/history")
-//       .then(res => {
-//         setHistory(res.data);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }, []);
 
   const zoomInto = () => {
     //default
@@ -110,7 +101,7 @@ console.log(`history`,props.history)
       <div className="dashboard">
         <Menu history={props.history} />
         <Map
-          sensors={props.sensorInDashboard}
+          sensors={sensorReducer.sensors}
           funcToggle={funcToggle}
           nonFuncToggle={nonFuncToggle}
           unknownToggle={unknownToggle}
@@ -125,12 +116,12 @@ console.log(`history`,props.history)
           setSearchFiltered={setSearchFiltered}
           viewport={viewport}
           setViewport={setViewport}
-          sensors={props.sensorInDashboard}
+          sensors={sensorReducer.sensors}
         />
         <Filter
             searchFiltered={props.searchFiltered}
             setSearchFiltered={props.setSearchFiltered}
-            sensors = {props.sensorInDashboard}
+            sensors = {sensorReducer.sensors}
             setFuncToggle = {setFuncToggle}
             setNonFuncToggle={setNonFuncToggle}
             setUnknownToggle={setUnknownToggle}
@@ -142,12 +133,11 @@ console.log(`history`,props.history)
 };
 const mapStateToProps = state => {
     return{
-        sensorInDashboard: state.sensorReducer.sensors,
+        //sensorInDashboard: state.sensorReducer.sensors,
         history: state.historyReducer.history
     }
 }
 export default connect(
     mapStateToProps,
-    {fetchSensor, 
-    fetchHistory}
+    { fetchHistory}
 )(Dashboard);

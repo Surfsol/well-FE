@@ -24,7 +24,9 @@ const Menu = props => {
     <>
       <div>
         <div className="hamburger-menu" onClick={openNav}>
-          <span style={{ backgroundColor: "#082B84" }}></span>
+        <span style={{ backgroundColor: "#082B84" }}></span>
+        <span style={{ backgroundColor: "#082B84" }}></span>
+        <span style={{ backgroundColor: "#082B84" }}></span>
         </div>
         <div id="myNav" className="overlay" onClick={closeNav}>
           <NavLink

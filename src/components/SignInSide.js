@@ -1,5 +1,6 @@
-import React, {useState}from 'react';
-import axios from 'axios'
+import React, {useState, useEffect}from 'react';
+import {useDispatch} from 'react-redux'
+import {fetchLogin} from '../redux-actions/login-action'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,6 +16,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { getThemeProps } from '@material-ui/styles';
+import { dispatch } from '../../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/rxjs/internal/observable/pairs';
 
 function Copyright() {
   return (
@@ -67,18 +69,13 @@ export default function SignInSide(props) {
   const handleChange = event => {
     setAccount({...account, [event.target.name]: event.target.value})
   }
-//https://well-done-staging.herokuapp.com
-  const handleSubmit = event => {
-    event.preventDefault();
-    axios
-      .post("https://well-done-staging.herokuapp.com/api/auth/login", account)
-      .then(res => {
-        console.log("res", res.data);
-        localStorage.setItem("token", res.data.token)
-        localStorage.setItem("userId", res.data.id)
-        props.history.push("/dashboard")
-      })
+  
+  const dispatch = useDispatch()
 
+  const handleSubmit = event => {
+    event.preventDefault()
+    dispatch(fetchLogin(account))
+    props.history.push('/dashboard')
   }
  
  

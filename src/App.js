@@ -12,6 +12,8 @@ import MonitorDetails from "./components/MonitorDetails";
 import Monitors from './components/MenuItems/overview/Monitors'
 import PrivateRoute from "./components/PrivateRoute"
 
+import OrgCreateOrg from './components/OrgCreateOrg'
+
 function App() {
   //selectedPump -> MonitorDetails, Dashboard -> Map
   const [selectedPump, setSelectedPump] = useState([]);
@@ -35,6 +37,8 @@ function App() {
           selectedPump={selectedPump}
         />
         <PrivateRoute path="/overview" page={Monitors}/>
+
+        <Route exact path="/register" component={OrgCreateOrg}/>
       </Switch>
     </div>
   );

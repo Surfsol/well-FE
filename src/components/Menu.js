@@ -57,6 +57,10 @@ const Menu = props => {
                 <NavLink to="/settings">Settings</NavLink>
               </div>
               <div className="eachNav">
+                <IoIosSettings size={25} />
+                <NavLink to="/admin">Admin</NavLink>
+              </div>
+              <div className="eachNav">
                 <FiLogOut size={25} />
                 <NavLink onClick={logout} to="/">
                   Logout

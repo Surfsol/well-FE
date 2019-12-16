@@ -38,7 +38,7 @@ function App() {
         />
         <PrivateRoute path="/overview" page={Monitors}/>
 
-        <Route exact path="/register" component={OrgCreateOrg}/>
+        <Route exact path="/admin" component={OrgCreateOrg}/>
       </Switch>
     </div>
   );

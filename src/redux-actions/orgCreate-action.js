@@ -6,7 +6,7 @@ export const CREATE_O_SUCCESS = "CREATE_O_SUCCESS";
 export const CREATE_O_FAILURE = "CREATE_O_FAILURE";
 
 export const createOrg = (orgMember) => dispatch => {
-    console.log('org action',orgMember)
+    console.log('localhost:4000/api/orgs',orgMember)
     dispatch({type: CREATE_O_FETCH})
 
     AxiosWithAuth()

@@ -12,7 +12,7 @@ import MonitorDetails from "./components/MonitorDetails";
 import Monitors from './components/MenuItems/overview/Monitors'
 import PrivateRoute from "./components/PrivateRoute"
 
-import OrgCreateOrg from './components/OrgCreateOrg'
+import Admin from './components/Admin'
 
 function App() {
   //selectedPump -> MonitorDetails, Dashboard -> Map
@@ -38,7 +38,7 @@ function App() {
         />
         <PrivateRoute path="/overview" page={Monitors}/>
 
-        <Route exact path="/admin" component={OrgCreateOrg}/>
+        <Route exact path="/Admin" component={Admin}/>
       </Switch>
     </div>
   );
